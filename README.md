@@ -1,9 +1,8 @@
 Agenda EDU - Aplicativo de Gestão Escolar
-https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white
-
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
 📝 Descrição
-O Agenda EDU é um aplicativo móvel desenvolvido em React Native para ajudar estudantes e professores a organizarem suas atividades acadêmicas. Com funcionalidades de autenticação e gerenciamento de tarefas, o app oferece uma solução completa para o dia a dia escolar.
+O Agenda EDU é um aplicativo móvel desenvolvido em React Native para ajudar estudantes e professores a organizarem suas atividades acadêmicas. Com funcionalidades de autenticação e gerenciamento de tarefas, o app oferece uma solução completa para o dia a dia escolar. (APLICATIVO COM FINS DE TREINAMENTO, SEM FINS LUCRATIVOS!)
 
 ✨ Funcionalidades Principais
 🔐 Autenticação Segura
@@ -14,26 +13,19 @@ Persistência de sessão do usuário
 Tela de boas-vindas personalizada
 
 ✅ Gerenciamento de Tarefas
-Criar, editar e excluir tarefas
-
-Marcar atividades como concluídas
-
-Visualização organizada por data/prioridade
-
-Lembretes para prazos importantes
 
 🛠 Tecnologias Utilizadas
 Frontend: React Native + TypeScript
 
-Estilização: Styled Components
+Estilização: StyleSheet
 
-Gerenciamento de Estado: Redux Toolkit
+Gerenciamento de Estado: Context
 
 Navegação: React Navigation
 
 Build: Expo
 
-Armazenamento Local: AsyncStorage
+Armazenamento Local: Context
 
 🚀 Como Executar o Projeto
 Pré-requisitos
@@ -47,8 +39,8 @@ Instalação
 Clone o repositório:
 
 bash
-git clone https://github.com/seu-usuario/agenda-edu.git
-cd agenda-edu
+git clone https://github.com/leviutima/list-native.git
+cd list-native
 Instale as dependências:
 
 bash
@@ -83,6 +75,4 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo LICENSE para d
 ✉️ Contato
 Para dúvidas ou sugestões, entre em contato:
 
-Email: contato@agendaedu.com
-
-Site: www.agendaedu.com
+Email: leviutima.profissional@gmail.com
