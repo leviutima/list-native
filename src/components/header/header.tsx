@@ -9,7 +9,7 @@ export function Header() {
     return(
         <View style={style.mainContainer}>
             <Text style={{color: 'white', fontSize: 25, fontWeight: '600'}}>Olá {email}</Text>
-            <Input value="" onChangeText={() => {}} placeholder="Crie uma tarefa"/>
+            <Input value="" onChangeText={() => {}} placeholder="Busque uma tarefa"/>
         </View>
     )
 }
