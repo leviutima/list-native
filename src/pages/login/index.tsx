@@ -35,11 +35,9 @@ export default function Login() {
 
   return (
     <View style={style.mainContainer}>
-      <View>
-        <Image source={logo} />
-      </View>
 
       <View style={style.firtsBox}>
+        <Text style={style.title} >AGENDA EDU</Text>
         <Text style={style.messageTitle}>Bem vindo de volta!</Text>
       </View>
 

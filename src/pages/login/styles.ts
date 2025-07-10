@@ -8,6 +8,12 @@ export const style = StyleSheet.create({
     gap: 50,
   },
 
+  title: {
+    fontSize: 60,
+    fontWeight: '900',
+    color: '#878AF6'
+  },
+
   firtsBox: {
     display: "flex",
     alignItems: "center",
@@ -29,19 +35,4 @@ export const style = StyleSheet.create({
     color: "#808080",
   },
 
-  boxButton: {
-    backgroundColor: '#878AF6',
-    width: 200,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 10,
-    borderRadius: 40
-  },
-
-  textButton: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: 'white'
-  }
 });
