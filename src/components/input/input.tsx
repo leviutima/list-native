@@ -3,8 +3,17 @@ import { style } from "./style";
 
 interface InputProps {
   placeholder: string;
+  value: string;
+  onChangeText: (text: string) => void;
 }
 
-export default function Input({ placeholder }: InputProps) {
-  return <TextInput style={style.inputStyle} placeholder={placeholder} />;
+export default function Input({ placeholder, value, onChangeText }: InputProps) {
+  return (
+    <TextInput
+      style={style.inputStyle}
+      placeholder={placeholder}
+      value={value}
+      onChangeText={onChangeText}
+    />
+  );
 }

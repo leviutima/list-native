@@ -29,15 +29,6 @@ export const style = StyleSheet.create({
     color: "#808080",
   },
 
-  inputStyle: {
-    borderColor: "#D3D0CD",
-    borderWidth: 1,
-    borderRadius: 40,
-    padding: 15,
-    width: 300,
-    backgroundColor: "#F1F7FA",
-  },
-
   boxButton: {
     backgroundColor: '#878AF6',
     width: 200,
