@@ -2,7 +2,7 @@ Agenda EDU - Aplicativo de Gestão Escolar
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
 📝 Descrição
-O Agenda EDU é um aplicativo móvel desenvolvido em React Native para ajudar estudantes e professores a organizarem suas atividades acadêmicas. Com funcionalidades de autenticação e gerenciamento de tarefas, o app oferece uma solução completa para o dia a dia escolar. (APLICATIVO COM FINS DE TREINAMENTO, SEM FINS LUCRATIVOS!)
+O Agenda EDU é um aplicativo móvel desenvolvido em React Native para ajudar estudantes e professores a organizarem suas atividades acadêmicas. Com funcionalidades de autenticação e gerenciamento de tarefas, o app oferece uma solução completa para o dia a dia escolar. (Aplicativo desenvolvido para fins didáticos, sem fins lucrativos.)
 
 ✨ Funcionalidades Principais
 🔐 Autenticação Segura
