@@ -35,4 +35,10 @@ export const style = StyleSheet.create({
     color: "#808080",
   },
 
+
+  forgotPasswordText: {
+    fontSize: 10,
+    color: '#808080'
+  }
+
 });

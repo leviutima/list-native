@@ -10,6 +10,7 @@ import ButtonSis from "../../components/button/button";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useUser } from "../../context/user-context";
 
 type RootStackParamList = {
   Login: undefined;
@@ -22,6 +23,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
+  const { setEmail: setEmailContext } = useUser();
 
   function handleLogin() {
     if (!email.trim() || !password.trim()) {
@@ -30,6 +32,7 @@ export default function Login() {
     }
     setError("")
     console.log("Entrou no sistema:", email, password);
+    setEmailContext(email);
     navigation.navigate("Home")
   }
 
@@ -53,11 +56,15 @@ export default function Login() {
 
         <View>
           <Text style={style.titleInput}>Senha:</Text>
-          <Input
+          <View>
+            <Input
             placeholder="Digite sua senha"
             value={password}
             onChangeText={setPassword}
-          />
+            />
+            <Text style={style.forgotPasswordText}>Esqueceu a senha? Clique AQUI para recuperar</Text>
+          </View>
+
         </View>
         {error ? (
           <Text style={{ color: "red", marginTop: 10 }}>{error}</Text>
