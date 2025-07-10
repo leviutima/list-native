@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { style } from "./styles";
 import logo from "../../assets/logo.png";
+import Input from "../../components/input/input";
 
 export default function Login() {
   return (
@@ -21,15 +22,11 @@ export default function Login() {
       <View style={style.containerForm}>
         <View>
           <Text style={style.titleInput}>Email:</Text>
-          <TextInput placeholder="Digite seu email" style={style.inputStyle} />
+          <Input placeholder="Digite seu email"/>
         </View>
         <View>
           <Text style={style.titleInput}>Senha:</Text>
-          <TextInput
-            placeholder="Digite sua senha"
-            value=""
-            style={style.inputStyle}
-          />
+          <Input placeholder="Digite sua senha"/>
         </View>
       </View>
       <TouchableOpacity style={style.boxButton}>
