@@ -8,11 +8,20 @@ import logo from "../../assets/logo.png";
 import Input from "../../components/input/input";
 import ButtonSis from "../../components/button/button";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
+type RootStackParamList = {
+  Login: undefined;
+  Home: undefined;
+};
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
   function handleLogin() {
     if (!email.trim() || !password.trim()) {
@@ -21,6 +30,7 @@ export default function Login() {
     }
     setError("")
     console.log("Entrou no sistema:", email, password);
+    navigation.navigate("Home")
   }
 
   return (
