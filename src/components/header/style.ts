@@ -1,4 +1,7 @@
 import { StyleSheet } from "react-native";
+import styled from "styled-components/native";
+
+export const Header = styled.View
 
 export const style = StyleSheet.create({
     mainContainer: {

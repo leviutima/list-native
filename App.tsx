@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { useColorScheme} from "react-native";
 import Login from "./src/pages/login";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -17,7 +17,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <UserProvider>
         <TaskProvider>
-          <NavigationContainer>
+          <NavigationContainer >
             <Stack.Navigator>
               <Stack.Screen
                 name="login"
@@ -36,5 +36,3 @@ export default function App() {
     </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({});

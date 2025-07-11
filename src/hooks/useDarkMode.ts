@@ -5,8 +5,10 @@ export function useDarkMode() {
   const scheme = useColorScheme();
   const isDark = scheme === "dark";
 
+   const forceDark = true;
+  
   return {
-    theme: isDark ? darkTheme : lightTheme,
-    isDark,
+    theme: forceDark ? darkTheme : (isDark ? darkTheme : lightTheme),
+    isDark: forceDark ? true : isDark,
   };
 }

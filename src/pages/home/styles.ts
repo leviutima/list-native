@@ -1,4 +1,13 @@
 import { StyleSheet } from "react-native";
+import { DefaultTheme } from "styled-components";
+import styled from "styled-components/native";
+
+export const MainContainer = styled.View(({ theme }: { theme: DefaultTheme }) => ({
+  flex: 1,
+  display: "flex",
+  flexDirection: "column",
+  backgroundColor: theme.background,
+})); 
 
 export const style = StyleSheet.create({
     mainContainer: {

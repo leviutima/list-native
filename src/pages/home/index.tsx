@@ -3,15 +3,14 @@ import { FlatList, Text, View } from "react-native";
 import { Header } from "../../components/header/header";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Footer from "../../components/footer/Footer";
-import { style } from "./styles";
+import { MainContainer, style } from "./styles";
 import { TaskContext } from "../../context/task-context";
 
 export default function Home() {
   const { tasks } = useContext(TaskContext);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={style.mainContainer}>
+      <MainContainer>
         <Header />
 
         <FlatList
@@ -37,7 +36,6 @@ export default function Home() {
         />
 
         <Footer />
-      </View>
-    </SafeAreaView>
+      </MainContainer>
   );
 }
