@@ -2,9 +2,14 @@ import { Text, View } from "react-native";
 import { HeaderContainer, MessageContainer, SubContainer, UserProfile } from "./style";
 import { useUser } from "../../context/user-context";
 import { Ionicons } from "@expo/vector-icons";
+import { useUsers } from "../../hooks/useUser";
 
 export function Header() {
   const { email } = useUser();
+  const { data, isLoading, error } = useUsers()
+
+  console.log("teste" ,data);
+  
 
   const getGreeting = () => {
     const now = new Date();
