@@ -16,11 +16,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useUser } from "../../context/user-context";
 import { useKeyboard } from "../../hooks/useKeyboard";
 import { MainContainer } from "../../styles/mainContainer";
-
-type RootStackParamList = {
-  Login: undefined;
-  Home: undefined;
-};
+import { RootStackParamList } from "../../utils/types";
 
 export default function Login() {
   const [email, setEmail] = useState("");

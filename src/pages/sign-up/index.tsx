@@ -8,16 +8,24 @@ import {
   Keyboard,
   ScrollView,
 } from "react-native";
-import {
-  FormContainer,
-  InputFormContainer,
-  SubContainer,
-} from "./styles";
+import { FormContainer, InputFormContainer, SubContainer } from "./styles";
 import { MainContainer } from "../../styles/mainContainer";
 import { useKeyboard } from "../../hooks/useKeyboard";
+import { InputForm } from "../../styles/inputForm";
+import ButtonSis from "../../components/button/button";
+import { Container } from "../../styles/container";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../utils/types";
 
 export default function SingUp() {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const keyboardVisible = useKeyboard();
+
+  const handleSingUp = async () => {
+    navigation.navigate("Login");
+  };
 
   return (
     <KeyboardAvoidingView
@@ -48,11 +56,31 @@ export default function SingUp() {
             <FormContainer>
               <InputFormContainer>
                 <Text>Nome</Text>
-                <TextInput placeholder="Digite seu nome" />
+                <InputForm placeholder="Digite seu nome" />
               </InputFormContainer>
-
-              {/* Adicione mais inputs aqui se necessário */}
+              <InputFormContainer>
+                <Text>Sobrenome</Text>
+                <InputForm placeholder="Digite seu nome" />
+              </InputFormContainer>
+              <InputFormContainer>
+                <Text>Email</Text>
+                <InputForm placeholder="Digite seu nome" />
+              </InputFormContainer>
+              <InputFormContainer>
+                <Text>Senha</Text>
+                <InputForm placeholder="Digite seu nome" />
+              </InputFormContainer>
             </FormContainer>
+            <Container>
+              <ButtonSis onPress={handleSingUp}>Criar conta</ButtonSis>
+              <Text style={{ fontSize: 10, color: "#9f9f9f" }}>OU</Text>
+              <ButtonSis onPress={() => navigation.navigate("Login")}>
+                Entrar
+              </ButtonSis>
+              <Text style={{ fontSize: 10, color: "#9f9f9f" }}>
+                Já tem uma conta?
+              </Text>
+            </Container>
           </MainContainer>
         </ScrollView>
       </TouchableWithoutFeedback>
