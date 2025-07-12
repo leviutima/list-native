@@ -2,6 +2,7 @@ import Login from "./src/pages/login";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "./src/pages/home";
+import SignUp from "./src/pages/sign-up";
 import { UserProvider } from "./src/context/user-context";
 import { TaskProvider } from "./src/context/task-context";
 import { ThemeProvider } from "styled-components";
@@ -26,6 +27,11 @@ export default function App() {
         <TaskProvider>
           <NavigationContainer>
             <Stack.Navigator>
+              <Stack.Screen
+                name="sign-up"
+                component={SignUp}
+                options={{ headerShown: false }}
+              />
               <Stack.Screen
                 name="login"
                 component={Login}
