@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { HeaderContainer, MessageContainer, SubContainer, UserProfile } from "./style";
+import { HeaderContainer, MessageContainer, SubContainer, TopHeader, UserProfile } from "./style";
 import { useUser } from "../../context/user-context";
 import { Ionicons } from "@expo/vector-icons";
 import { useUsers } from "../../hooks/useUser";
@@ -26,10 +26,13 @@ export function Header() {
 
   return (
     <HeaderContainer>
-      <SubContainer>
+      <TopHeader>
         <UserProfile>
-          <Ionicons name="person" size={54} color="black" />
+          <Ionicons name="person" size={24} color="black" />
         </UserProfile>
+      </TopHeader>
+      <SubContainer>
+
         <MessageContainer>
           <Text style={{ color: "", fontSize: 25, fontWeight: "600" }}>
             {getGreeting()} {email}

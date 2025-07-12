@@ -15,6 +15,10 @@ export const HeaderContainer = styled.View`
 
 `;
 
+export const TopHeader = styled.View `
+  
+`
+
 export const MessageContainer = styled.View `
 
 `
