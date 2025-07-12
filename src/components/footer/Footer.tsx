@@ -8,7 +8,7 @@ import {
   StyleSheet,
   Switch,
 } from "react-native";
-import { style } from "./style";
+import { FooterContainer, style } from "./style";
 import { TaskContext } from "../../context/task-context";
 
 export default function Footer() {
@@ -52,7 +52,7 @@ export default function Footer() {
   }
 
   return (
-    <View style={style.footerContainer}>
+    <FooterContainer >
       <TouchableOpacity style={style.buttonCreateTask} onPress={toggleModal}>
         <Text style={style.plusText}>+</Text>
       </TouchableOpacity>
@@ -119,7 +119,7 @@ export default function Footer() {
           </View>
         </View>
       </Modal>
-    </View>
+    </FooterContainer>
   );
 }
 

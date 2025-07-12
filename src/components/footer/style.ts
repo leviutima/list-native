@@ -1,4 +1,10 @@
 import { StyleSheet } from "react-native";
+import styled from "styled-components/native";
+
+export const FooterContainer = styled.View`
+  height: 60px;
+  background-color: #878AF6;
+`
 
 export const style = StyleSheet.create({
   footerContainer: {
@@ -26,6 +32,7 @@ export const style = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 3,
+    zIndex: 20,
   },
 
   plusText: {
