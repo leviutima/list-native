@@ -11,7 +11,6 @@ import { style } from "./styles";
 import ButtonSis from "../../components/button/button";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { useUser } from "../../context/user-context";
 import { useKeyboard } from "../../hooks/useKeyboard";
 import { MainContainer } from "../../styles/mainContainer";
 import { RootStackParamList } from "../../utils/types";
@@ -19,8 +18,11 @@ import z from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { InputForm } from "../../styles/inputForm";
-import { useMutation } from "@tanstack/react-query";
-import { login } from "../../service/auth/login";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store";
+import { loginRequest } from "../../redux/actions/authAction";
+import { useEffect } from "react";
 
 const loginFormSchema = z.object({
   email: z.string().email("Insira um email válido"),
@@ -30,7 +32,8 @@ const loginFormSchema = z.object({
 type LoginFormSchema = z.infer<typeof loginFormSchema>;
 
 export default function Login() {
-  const { setUser } = useUser();
+  const dispatch = useDispatch<AppDispatch>();
+  const { loading, error, user } = useSelector((state: RootState) => state.auth);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const keyboardVisible = useKeyboard();
@@ -43,20 +46,16 @@ export default function Login() {
     resolver: zodResolver(loginFormSchema),
   });
 
-  const { mutate, isPending } = useMutation({
-    mutationFn: login,
-    onSuccess: (user) => {
-      setUser(user);
-      navigation.navigate("Home");
-    },
-    onError: (error: any) => {
-      console.error("Erro ao logar:", error.message);
-    },
-  });
-
-  const handleLogin = (data: LoginFormSchema) => {
-    mutate(data);
+  const handleLogin = async (data: LoginFormSchema) => {
+    console.log('[Login] handleLogin chamado com:', data);
+    dispatch(loginRequest(data));
   };
+
+  useEffect(() => {
+  if (user) {
+    navigation.navigate("Home");
+  }
+}, [user]);
 
   return (
     <KeyboardAvoidingView
@@ -129,9 +128,10 @@ export default function Login() {
               </View>
             </View>
 
-            <ButtonSis onPress={handleSubmit(handleLogin)} disabled={isPending}>
-              {isPending ? "Carregando..." : "Entrar"}
+            <ButtonSis onPress={handleSubmit(handleLogin)}>
+              {loading ? "Entrando..." : "Entrar"}
             </ButtonSis>
+            {error && <Text style={{ color: "red" }}>{error}</Text>}
           </MainContainer>
         </ScrollView>
       </TouchableWithoutFeedback>

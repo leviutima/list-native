@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 type Props = {
     children: ReactNode
     onPress: () => void
-    disabled: boolean
+    disabled?: boolean
 }
 
 export default function ButtonSis({children, onPress, disabled}: Props) {

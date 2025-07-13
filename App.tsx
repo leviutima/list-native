@@ -3,10 +3,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "./src/pages/home";
 import SignUp from "./src/pages/sign-up";
-import { UserProvider } from "./src/context/user-context";
 import { TaskProvider } from "./src/context/task-context";
-import { ThemeProvider } from "styled-components";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Provider } from "react-redux";
+import { store } from "./src/redux/store";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -22,30 +22,30 @@ export default function App() {
   });
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <UserProvider>
-        <TaskProvider>
-          <NavigationContainer>
-            <Stack.Navigator>
-              <Stack.Screen
-                name="SignUp"
-                component={SignUp}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Login"
-                component={Login}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Home"
-                component={Home}
-                options={{ headerShown: false }}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </TaskProvider>
-      </UserProvider>
-    </QueryClientProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+          <TaskProvider>
+            <NavigationContainer>
+              <Stack.Navigator>
+                <Stack.Screen
+                  name="SignUp"
+                  component={SignUp}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Login"
+                  component={Login}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Home"
+                  component={Home}
+                  options={{ headerShown: false }}
+                />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </TaskProvider>
+      </QueryClientProvider>
+      </Provider>
   );
 }

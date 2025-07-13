@@ -1,11 +1,12 @@
 import { api } from "../api";
 
-type LoginData = {
+export type LoginData = {
   email: string;
   password: string;
 };
 
 export const login = async (data: LoginData) => {
+  try{
   const res = await api.get(`/user`, {
     params: {
       email: data.email,
@@ -16,4 +17,9 @@ export const login = async (data: LoginData) => {
     throw new Error("Email ou senha inválidos");
   }
   return res.data[0]; 
+  } catch(err) {
+    console.log(err);
+    
+  }
+
 };

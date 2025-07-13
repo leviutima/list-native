@@ -6,15 +6,17 @@ import {
   TopHeader,
   UserProfile,
 } from "./style";
-import { useUser } from "../../context/user-context";
 import { Ionicons } from "@expo/vector-icons";
 import { InputSearch } from "../input-search/InputSearch";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
-export function Header() {
-  const { user } = useUser();
+export function Header() {  
 
-  
+const user = useSelector((state: RootState) => state.auth.user);
+
+console.log(user);
 
   return (
     <HeaderContainer>
@@ -29,7 +31,7 @@ export function Header() {
           <Text style={{ color: "", fontSize: 21, fontWeight: "300" }}>
             Olá,
           </Text>
-          <Text style={{ fontSize: 21, fontWeight: "700" }}>{user?.name}!</Text>
+          <Text style={{ fontSize: 21, fontWeight: "700" }}>{user?.name} {user?.surname}!</Text>
         </MessageContainer>
         <InputSearch />
       </SubContainer>
