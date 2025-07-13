@@ -1,17 +1,18 @@
 import { createContext, useContext, useState, ReactNode } from "react";
+import { UserProps } from "../utils/interfaces";
 
 interface UserContextType {
-  email: string;
-  setEmail: (email: string) => void;
+  user: UserProps | null;
+  setUser: React.Dispatch<React.SetStateAction<UserProps | null>>;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export function UserProvider({ children }: { children: ReactNode }) {
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState<UserProps | null>(null);
 
   return (
-    <UserContext.Provider value={{ email, setEmail }}>
+    <UserContext.Provider value={{ user, setUser }}>
       {children}
     </UserContext.Provider>
   );

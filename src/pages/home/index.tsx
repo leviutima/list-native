@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Footer from "../../components/footer/Footer";
 import { ContainerList, MainContainer, style } from "./styles";
 import { TaskContext } from "../../context/task-context";
+import CardTodo from "../../components/card-todo/cardTodo";
 
 export default function Home() {
   const { tasks } = useContext(TaskContext);
@@ -18,27 +19,13 @@ export default function Home() {
           keyExtractor={(item) => item.id}
           contentContainerStyle={{ paddingVertical: 20, paddingHorizontal: 16 }}
           renderItem={({ item }) => (
-            <View style={style.taskCard}>
-              <Text style={style.taskTitle}>{item.title}</Text>
-              <Text style={style.taskDescription}>{item.description}</Text>
-              <View style={style.flagsContainer}>
-                {item.urgent && (
-                  <Text style={[style.flag, { backgroundColor: "#f44336" }]}>
-                    Urgente
-                  </Text>
-                )}
-                {item.pending && (
-                  <Text style={[style.flag, { backgroundColor: "#ff9800" }]}>
-                    Pendente
-                  </Text>
-                )}
-                {item.optional && (
-                  <Text style={[style.flag, { backgroundColor: "#2196f3" }]}>
-                    Opcional
-                  </Text>
-                )}
-              </View>
-            </View>
+            <CardTodo
+              title={item.title}
+              description={item.description}
+              urgent={item.urgent}
+              pending={item.pending}
+              optional={item.optional}
+            />
           )}
           ListEmptyComponent={() => (
             <Text style={{ textAlign: "center", marginTop: 40, color: "#888" }}>

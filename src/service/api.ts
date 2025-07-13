@@ -4,6 +4,6 @@ import Constants from "expo-constants"
 const { API_URL } = Constants.expoConfig?.extra || {}
 
 export const api = axios.create({
-    baseURL: API_URL,
+    baseURL: "http://192.168.15.8:3000",
     withCredentials: true,
 })

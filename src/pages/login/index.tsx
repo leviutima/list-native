@@ -8,37 +8,55 @@ import {
   Keyboard,
 } from "react-native";
 import { style } from "./styles";
-import Input from "../../components/input/input";
 import ButtonSis from "../../components/button/button";
-import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useUser } from "../../context/user-context";
 import { useKeyboard } from "../../hooks/useKeyboard";
 import { MainContainer } from "../../styles/mainContainer";
 import { RootStackParamList } from "../../utils/types";
+import z from "zod";
+import { Controller, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { InputForm } from "../../styles/inputForm";
+import { useMutation } from "@tanstack/react-query";
+import { login } from "../../service/auth/login";
+
+const loginFormSchema = z.object({
+  email: z.string().email("Insira um email válido"),
+  password: z.string().nonempty("Senha é obrigatória"),
+});
+
+type LoginFormSchema = z.infer<typeof loginFormSchema>;
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
+  const { setUser } = useUser();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const { setEmail: setEmailContext } = useUser();
-
   const keyboardVisible = useKeyboard();
 
-  function handleLogin() {
-    if (!email.trim() || !password.trim()) {
-      setError("Preencha todos os campos.");
-      return;
-    }
-    setError("");
-    console.log("Entrou no sistema:", email, password);
-    setEmailContext(email);
-    navigation.navigate("Home");
-  }
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormSchema>({
+    resolver: zodResolver(loginFormSchema),
+  });
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: login,
+    onSuccess: (user) => {
+      setUser(user);
+      navigation.navigate("Home");
+    },
+    onError: (error: any) => {
+      console.error("Erro ao logar:", error.message);
+    },
+  });
+
+  const handleLogin = (data: LoginFormSchema) => {
+    mutate(data);
+  };
 
   return (
     <KeyboardAvoidingView
@@ -64,31 +82,56 @@ export default function Login() {
             <View style={style.containerForm}>
               <View>
                 <Text style={style.titleInput}>Email:</Text>
-                <Input
-                  placeholder="Digite seu email"
-                  value={email}
-                  onChangeText={setEmail}
+                <Controller
+                  control={control}
+                  name="email"
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <InputForm
+                      placeholder="Digite seu email"
+                      onChangeText={onChange}
+                      onBlur={onBlur}
+                      value={value}
+                      hasError={!!errors.email}
+                    />
+                  )}
                 />
+                {errors.email && (
+                  <Text style={{ color: "red", marginTop: 4 }}>
+                    {errors.email.message}
+                  </Text>
+                )}
               </View>
 
-              <View>
+              <View style={{ marginTop: 16 }}>
                 <Text style={style.titleInput}>Senha:</Text>
-                <Input
-                  placeholder="Digite sua senha"
-                  value={password}
-                  onChangeText={setPassword}
+                <Controller
+                  control={control}
+                  name="password"
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <InputForm
+                      placeholder="Digite sua senha"
+                      onChangeText={onChange}
+                      onBlur={onBlur}
+                      value={value}
+                      hasError={!!errors.password}
+                      secureTextEntry
+                    />
+                  )}
                 />
+                {errors.password && (
+                  <Text style={{ color: "red", marginTop: 4 }}>
+                    {errors.password.message}
+                  </Text>
+                )}
                 <Text style={style.forgotPasswordText}>
                   Esqueceu a senha? Clique AQUI para recuperar
                 </Text>
               </View>
-
-              {error ? (
-                <Text style={{ color: "red", marginTop: 10 }}>{error}</Text>
-              ) : null}
             </View>
 
-            <ButtonSis onPress={handleLogin}>Entrar</ButtonSis>
+            <ButtonSis onPress={handleSubmit(handleLogin)} disabled={isPending}>
+              {isPending ? "Carregando..." : "Entrar"}
+            </ButtonSis>
           </MainContainer>
         </ScrollView>
       </TouchableWithoutFeedback>

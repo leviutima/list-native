@@ -1,10 +1,14 @@
 import styled from "styled-components/native";
 
-export const InputForm = styled.TextInput`
-  border: 0.5px;
-  background-color: #F1F7FA;
+interface InputProps {
+  hasError?: boolean;
+}
+
+export const InputForm = styled.TextInput<InputProps>`
+  border-width: 1px;
+  background-color: #f1f7fa;
   width: 300px;
   border-radius: 30px;
-  border-color: #D3D0CD;
   padding: 10px;
+  border-color: ${({ hasError }: InputProps) => (hasError ? "red" : "#d3d0cd")};
 `;

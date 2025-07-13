@@ -1,11 +1,25 @@
 {
   "user": [
-        {
-            "id": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
-            "name": "Levi",
-            "surname": "Utima",
-            "email": "levi.utima@gmail.com",
-            "password": "senha123"
-        }
-    ]
+    {
+      "id": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
+      "name": "Levi",
+      "surname": "Utima",
+      "email": "levi.utima@gmail.com",
+      "password": "senha123"
+    }
+  ],
+  "task": [
+    {
+      "id": "l1j231021lk1dj102d1jc1c018dc10iosaldj",
+      "title": "Fazer dever de casa",
+      "description": "Aula de matemática",
+      "status": "URGENT",
+      "finished": false,
+      "createdAt": "2025-07-12T19:15:00Z",
+      "subtasks": [
+        { "id": "1", "title": "Exercício 1-10", "finished": false },
+        { "id": "2", "title": "Resumo aula", "finished": false }
+      ]
+    }
+  ]
 }

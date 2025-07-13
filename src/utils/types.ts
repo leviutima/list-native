@@ -3,3 +3,9 @@ export type RootStackParamList = {
   Home: undefined;
   SingUp: undefined
 };
+
+export enum StatusTaskType  {
+  URGENT = "URGENT",
+  PENDING = "PENDING",
+  OPTIONAL = "OPTIONAL",
+}

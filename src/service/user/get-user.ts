@@ -7,7 +7,6 @@ export const getUser = async () => {
     return res.data;
   } catch (err: any) {
     console.log(err);
-
     throw new Error(err?.response?.data?.message || "Erro desconhecido");
   }
 };
