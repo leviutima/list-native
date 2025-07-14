@@ -1,0 +1,33 @@
+name: Expo EAS Build
+
+on:
+  push:
+    branches:
+      - main   # ou sua branch principal
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18 # ou a versão que você usa
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install EAS CLI
+        run: npm install -g eas-cli
+
+      - name: Login to EAS
+        run: eas login --token ${{ secrets.EAS_TOKEN }}
+
+      - name: Run EAS build
+        run: eas build --platform all --non-interactive
+

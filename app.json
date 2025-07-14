@@ -16,6 +16,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.leviutima.list",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -34,6 +35,12 @@
           "organization": "lutm"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "1488a2ad-b7c4-41d8-aa3e-f6f396073668"
+      }
+    },
+    "owner": "levi.utima"
   }
 }
