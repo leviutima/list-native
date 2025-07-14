@@ -128,7 +128,7 @@ export default function Login() {
               </View>
             </View>
 
-            <ButtonSis onPress={handleSubmit(handleLogin)}>
+            <ButtonSis onPress={handleSubmit(handleLogin)} disabled={loading}>
               {loading ? "Entrando..." : "Entrar"}
             </ButtonSis>
             {error && <Text style={{ color: "red" }}>{error}</Text>}

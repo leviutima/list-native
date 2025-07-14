@@ -18,8 +18,8 @@ export const login = async (data: LoginData) => {
   }
   return res.data[0]; 
   } catch(err) {
-    console.log(err);
-    
+    console.log("erro:", err);
+    throw err;
   }
 
 };
