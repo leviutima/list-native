@@ -1,10 +1,9 @@
-name: Expo EAS Build
+name: Build Expo App
 
 on:
   push:
     branches:
-      - main   # ou sua branch principal
-  pull_request:
+      - main
 
 jobs:
   build:
@@ -17,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18 # ou a versão que você usa
+          node-version: 18
 
       - name: Install dependencies
         run: npm install
@@ -29,5 +28,4 @@ jobs:
         run: eas login --token ${{ secrets.EAS_TOKEN }}
 
       - name: Run EAS build
-        run: eas build --platform all --non-interactive
-
+        run: eas build --platform android --profile production --non-interactive
