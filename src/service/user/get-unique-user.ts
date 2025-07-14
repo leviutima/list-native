@@ -1,8 +1,8 @@
 import { api } from "../api";
 
-export const getUniqueUser = async(id: string) => {
+export const getUniqueUser = async(userId: string) => {
     try{
-        const res = await api.get(`/user/${id}`)
+        const res = await api.get(`/task?userId=${userId}`)
         return res.data
     }catch(err: any) {
         console.log(err);

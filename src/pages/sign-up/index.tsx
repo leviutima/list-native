@@ -17,6 +17,9 @@ import { Container } from "../../styles/container";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../utils/types";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 export default function SingUp() {
   const navigation =
@@ -26,6 +29,14 @@ export default function SingUp() {
   const handleSingUp = async () => {
     navigation.navigate("Login");
   };
+
+  const { user } = useSelector((state: RootState) => state.auth);
+
+    useEffect(() => {
+    if (user) {
+      navigation.navigate("Home");
+    }
+  }, [user]);
 
   return (
     <KeyboardAvoidingView

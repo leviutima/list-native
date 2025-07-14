@@ -16,8 +16,6 @@ export function Header() {
 
 const user = useSelector((state: RootState) => state.auth.user);
 
-console.log(user);
-
   return (
     <HeaderContainer>
       <TopHeader>
