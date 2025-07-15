@@ -1,10 +1,18 @@
 {
   "user": [
     {
-      "name": "Levi ",
+      "name": "Levi",
       "surname": "Utima",
       "email": "levi.utima@gmail.com",
-      "id": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k"
+      "id": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
+      "password": "senha123"
+    },
+    {
+      "name": "teste",
+      "surname": "teste",
+      "email": "teste@gmail.com",
+      "id": "ad81012l1k2j3l1kjld2kj1kld1kjdl1k2j1l2",
+      "password": "senha123"
     }
   ],
   "task": [
@@ -36,6 +44,36 @@
       "subtasks": [
         {
           "title": "Fazer Resumo"
+        }
+      ],
+      "userId": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
+      "finished": false
+    },
+    {
+      "id": "330a",
+      "title": "teste",
+      "description": "este",
+      "status": "OPTIONAL",
+      "subtasks": [],
+      "userId": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
+      "finished": false
+    },
+    {
+      "id": "5427",
+      "title": "asas",
+      "description": "asa",
+      "status": "PENDING",
+      "userId": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
+      "finished": false
+    },
+    {
+      "id": "7b71",
+      "title": "asdasdasdasdada",
+      "description": "asdasdad",
+      "status": "PENDING",
+      "subtasks": [
+        {
+          "title": "teste"
         }
       ],
       "userId": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",

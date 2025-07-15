@@ -15,7 +15,11 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../utils/types";
 
-export function Header() {
+type HeaderProps = {
+  onSearch: (query: string) => void;
+};
+
+export function Header({ onSearch }: HeaderProps) {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const user = useSelector((state: RootState) => state.auth.user);
@@ -39,7 +43,7 @@ export function Header() {
             {user?.name} {user?.surname}!
           </Text>
         </MessageContainer>
-        <InputSearch />
+        <InputSearch onSearch={onSearch}/>
       </SubContainer>
     </HeaderContainer>
   );
