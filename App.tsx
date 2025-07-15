@@ -1,4 +1,5 @@
 import Login from "./src/pages/login";
+import Splash from "./src/pages/splash";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "./src/pages/home";
@@ -58,6 +59,11 @@ export default Sentry.wrap(function App() {
               <Stack.Screen
                 name="Profile"
                 component={Profile}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Splash"
+                component={Splash}
                 options={{ headerShown: false }}
               />
             </Stack.Navigator>
