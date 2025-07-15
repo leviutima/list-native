@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1752553490607" clover="3.2.0">
+  <project timestamp="1752553490608" name="All files">
+    <metrics statements="40" coveredstatements="40" conditionals="18" coveredconditionals="14" methods="19" coveredmethods="13" elements="77" coveredelements="67" complexity="0" loc="40" ncloc="40" packages="5" files="8" classes="8"/>
+    <package name="components.button">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="button.tsx" path="C:\Users\minel\Desktop\my-projects\list\src\components\button\button.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="11" type="stmt"/>
+      </file>
+      <file name="style.ts" path="C:\Users\minel\Desktop\my-projects\list\src\components\button\style.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="hooks">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
+      <file name="useKeyboard.ts" path="C:\Users\minel\Desktop\my-projects\list\src\hooks\useKeyboard.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="17" count="8" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.login">
+      <metrics statements="17" coveredstatements="17" conditionals="16" coveredconditionals="12" methods="7" coveredmethods="7"/>
+      <file name="index.tsx" path="C:\Users\minel\Desktop\my-projects\list\src\pages\login\index.tsx">
+        <metrics statements="16" coveredstatements="16" conditionals="16" coveredconditionals="12" methods="7" coveredmethods="7"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="38" count="8" type="stmt"/>
+        <line num="39" count="8" type="stmt"/>
+        <line num="41" count="8" type="stmt"/>
+        <line num="42" count="8" type="stmt"/>
+        <line num="48" count="8" type="stmt"/>
+        <line num="56" count="8" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="61" count="8" type="stmt"/>
+        <line num="62" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="67" count="8" type="stmt"/>
+        <line num="95" count="10" type="stmt"/>
+        <line num="117" count="10" type="stmt"/>
+        <line num="154" count="1" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="styles.ts" path="C:\Users\minel\Desktop\my-projects\list\src\pages\login\styles.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="redux.actions">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
+      <file name="authAction.ts" path="C:\Users\minel\Desktop\my-projects\list\src\redux\actions\authAction.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="styles">
+      <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="inputForm.ts" path="C:\Users\minel\Desktop\my-projects\list\src\styles\inputForm.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="13" count="18" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="mainContainer.ts" path="C:\Users\minel\Desktop\my-projects\list\src\styles\mainContainer.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
