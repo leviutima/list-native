@@ -1,4 +1,4 @@
-name: Build Expo App
+name: CI - Testes
 
 on:
   push:
@@ -7,11 +7,11 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout código
         uses: actions/checkout@v3
 
       - name: Setup Node.js
@@ -25,19 +25,8 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
-      - name: Install dependencies
+      - name: Instalar dependências
         run: npm install
 
-      - name: Run tests with coverage
+      - name: Executar testes com cobertura
         run: npm run test:coverage
-
-      - name: Install EAS CLI
-        run: npm install -g eas-cli
-
-      - name: EAS login check
-        run: eas whoami || true
-
-      - name: Run EAS build
-        env:
-          EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
-        run: eas build --platform android --profile production --non-interactive
