@@ -60,7 +60,10 @@ export default function Login() {
 
   useEffect(() => {
   if (user) {
-    navigation.navigate("Home");
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "Splash" }],
+    });
   }
 }, [user]);
 

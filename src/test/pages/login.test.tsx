@@ -5,6 +5,7 @@ import Login from "../../pages/login";
 
 const mockDispatch = jest.fn();
 const mockNavigate = jest.fn();
+const mockReplace = jest.fn(); 
 
 let mockedState: {
   auth: {
@@ -25,6 +26,8 @@ jest.mock("@react-navigation/native", () => {
     ...actualNav,
     useNavigation: () => ({
       navigate: mockNavigate,
+      replace: mockReplace,
+      reset: jest.fn(),
     }),
   };
 });
@@ -81,17 +84,17 @@ describe("Login screen", () => {
     });
   });
 
-  it("deve navegar para Home ao logar com sucesso", async () => {
-    mockedState.auth.user = { id: 1, name: "João" };
+  it("deve navegar para Splash ao logar com sucesso", async () => {
+    mockedState.auth.user = { id: 1, name: "João" }; 
 
-    const { getByText } = render(
+    render(
       <NavigationContainer>
         <Login />
       </NavigationContainer>
     );
 
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith("Home");
+      expect(mockReplace).toHaveBeenCalledWith("Splash"); 
     });
   });
 });
