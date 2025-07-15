@@ -15,7 +15,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../utils/types";
 
-export function Header() {
+export function HeaderProfile() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const user = useSelector((state: RootState) => state.auth.user);
@@ -23,23 +23,22 @@ export function Header() {
   return (
     <HeaderContainer>
       <TopHeader>
-        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
           <UserProfile>
-            <Ionicons name="person" size={24} color="black" />
+            <Ionicons name="arrow-back" size={24} color="black" />
           </UserProfile>
         </TouchableOpacity>
         <Ionicons name="notifications-outline" size={24} color="black" />
       </TopHeader>
       <SubContainer>
         <MessageContainer>
-          <Text style={{ color: "", fontSize: 21, fontWeight: "300" }}>
+          <Text style={{ color: "", fontSize: 35, fontWeight: "300" }}>
             Olá,
           </Text>
-          <Text style={{ fontSize: 21, fontWeight: "700" }}>
+          <Text style={{ fontSize: 35, fontWeight: "700" }}>
             {user?.name} {user?.surname}!
           </Text>
         </MessageContainer>
-        <InputSearch />
       </SubContainer>
     </HeaderContainer>
   );

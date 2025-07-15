@@ -2,6 +2,7 @@ import {
   LOGIN_FAILURE,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
+  SET_USER,
 } from "../actions/authAction";
 
 interface AuthState {
@@ -24,6 +25,8 @@ export const authReducer = (state = initialState, action: any): AuthState => {
       return { ...state, loading: false, user: action.payload };
     case LOGIN_FAILURE:
       return { ...state, loading: false, error: action.payload };
+    case SET_USER:
+      return { ...state, user: action.payload };
     case "LOGOUT":
       return {
         ...state,

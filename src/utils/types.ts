@@ -1,7 +1,8 @@
 export type RootStackParamList = {
   Login: undefined;
   Home: undefined;
-  SingUp: undefined
+  SingUp: undefined;
+  Profile: undefined;
 };
 
 export enum StatusTaskType  {

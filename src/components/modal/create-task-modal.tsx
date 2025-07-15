@@ -84,8 +84,6 @@ export default function CreateTaskModal({ visible, onClose }: CreateTaskModalPro
       <View style={styles.modalBackground}>
         <View style={styles.modalContainer}>
           <Text style={styles.modalTitle}>Nova Tarefa</Text>
-
-          {/* Título */}
           <Controller
             control={control}
             name="title"
@@ -101,8 +99,6 @@ export default function CreateTaskModal({ visible, onClose }: CreateTaskModalPro
               </>
             )}
           />
-
-          {/* Descrição */}
           <Controller
             control={control}
             name="description"
@@ -122,8 +118,6 @@ export default function CreateTaskModal({ visible, onClose }: CreateTaskModalPro
               </>
             )}
           />
-
-          {/* Status */}
           <Text style={{ marginBottom: 8 }}>Status</Text>
           <Controller
             control={control}
@@ -146,8 +140,6 @@ export default function CreateTaskModal({ visible, onClose }: CreateTaskModalPro
               </>
             )}
           />
-
-          {/* Subtarefas */}
           <Text style={styles.subtaskLabel}>Subtarefas</Text>
           <View style={styles.subtaskRow}>
             <TextInput
