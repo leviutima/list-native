@@ -1,7 +1,5 @@
-import { StyleSheet } from "react-native";
-import { DefaultTheme } from "styled-components";
 import styled from "styled-components/native";
-import { style } from "../button/style";
+
 
 export const HeaderContainer = styled.View`
   display: flex;

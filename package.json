@@ -52,6 +52,9 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@react-native-community/cli": "^19.1.0",
+    "@storybook/addon-ondevice-actions": "^9.0.14",
+    "@storybook/addon-ondevice-controls": "^9.0.14",
+    "@storybook/react-native": "^9.0.14",
     "@testing-library/jest-native": "^5.4.3",
     "@testing-library/react-native": "^12.2.0",
     "@types/jest": "^30.0.0",

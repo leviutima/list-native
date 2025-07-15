@@ -29,7 +29,7 @@
       "title": "Fazer dever de casa",
       "description": "Aula de matemática",
       "status": "URGENT",
-      "finished": false,
+      "finished": true,
       "subtasks": [
         {
           "id": "1",
@@ -63,7 +63,7 @@
       "status": "OPTIONAL",
       "subtasks": [],
       "userId": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
-      "finished": false
+      "finished": true
     },
     {
       "id": "5427",
@@ -97,7 +97,7 @@
         }
       ],
       "userId": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
-      "finished": false
+      "finished": true
     }
   ]
 }

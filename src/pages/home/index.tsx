@@ -12,7 +12,7 @@ import { getTasksByUser } from "../../service/task/get-unique-task";
 export default function Home() {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<
-    "all" | "PENDING" | "URGENT" | "done"
+    "all" | "PENDING" | "URGENT" | true
   >("all");
 
   const user = useSelector((state: RootState) => state.auth.user);
@@ -31,9 +31,10 @@ export default function Home() {
       if (statusFilter === "all") return true;
       if (statusFilter === "PENDING") return task.status === "PENDING";
       if (statusFilter === "URGENT") return task.status === "URGENT";
-      if (statusFilter === "done") return task.finished === true;
+      if (statusFilter === true) return task.finished === true;
       return true;
     });
+    
 
   return (
     <MainContainer>
@@ -64,8 +65,8 @@ export default function Home() {
           />
           <TextFilterButton
             label="Concluídas"
-            active={statusFilter === "done"}
-            onPress={() => setStatusFilter("done")}
+            active={statusFilter === true}
+            onPress={() => setStatusFilter(true)}
           />
         </View>
 
@@ -82,6 +83,9 @@ export default function Home() {
                 title: s.title,
                 done: s.finished,
               }))}
+              id={item.id}
+              key={item.id}
+              finished={item.finished} 
             />
           )}
           ListEmptyComponent={() => (
