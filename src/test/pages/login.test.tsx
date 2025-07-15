@@ -4,20 +4,43 @@ import { NavigationContainer } from "@react-navigation/native";
 import Login from "../../pages/login";
 
 const mockDispatch = jest.fn();
+const mockNavigate = jest.fn();
+
+let mockedState: {
+  auth: {
+    loading: boolean;
+    error: string | null;
+    user: { id: number; name: string } | null;
+  };
+};
 
 jest.mock("react-redux", () => ({
   useDispatch: () => mockDispatch,
-  useSelector: (selectorFn: any) =>
-    selectorFn({
+  useSelector: (selectorFn: any) => selectorFn(mockedState),
+}));
+
+jest.mock("@react-navigation/native", () => {
+  const actualNav = jest.requireActual("@react-navigation/native");
+  return {
+    ...actualNav,
+    useNavigation: () => ({
+      navigate: mockNavigate,
+    }),
+  };
+});
+
+describe("Login screen", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockedState = {
       auth: {
         loading: false,
         error: null,
         user: null,
       },
-    }),
-}));
+    };
+  });
 
-describe("Login screen", () => {
   it("deve exibir erro ao enviar sem preencher os campos", async () => {
     const { getByText } = render(
       <NavigationContainer>
@@ -40,7 +63,10 @@ describe("Login screen", () => {
       </NavigationContainer>
     );
 
-    fireEvent.changeText(getByPlaceholderText("Digite seu email"), "test@email.com");
+    fireEvent.changeText(
+      getByPlaceholderText("Digite seu email"),
+      "test@email.com"
+    );
     fireEvent.changeText(getByPlaceholderText("Digite sua senha"), "123456");
     fireEvent.press(getByText("Entrar"));
 
@@ -52,6 +78,20 @@ describe("Login screen", () => {
           password: "123456",
         },
       });
+    });
+  });
+
+  it("deve navegar para Home ao logar com sucesso", async () => {
+    mockedState.auth.user = { id: 1, name: "João" };
+
+    const { getByText } = render(
+      <NavigationContainer>
+        <Login />
+      </NavigationContainer>
+    );
+
+    await waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith("Home");
     });
   });
 });
