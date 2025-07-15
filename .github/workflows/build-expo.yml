@@ -30,10 +30,13 @@ jobs:
       - name: Run tests
         run: npm test -- --ci
 
+      - name: Run tests with coverage
+        run: npm run test:coverage
+
       - name: Install EAS CLI
         run: npm install -g eas-cli
 
-      - name: EAS login check (opcional)
+      - name: EAS login check
         run: eas whoami || true
 
       - name: Run EAS build
