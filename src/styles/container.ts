@@ -5,5 +5,6 @@ export const Container = styled.View `
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    margin-top: 10;
+    margin-bottom: 10;
 `

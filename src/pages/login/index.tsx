@@ -25,7 +25,10 @@ import { loginRequest } from "../../redux/actions/authAction";
 import { useEffect } from "react";
 
 const loginFormSchema = z.object({
-  email: z.string().email("Insira um email válido"),
+      email: z
+    .string()
+    .nonempty("Insira um email válido")
+    .email("Insira um email válido"),
   password: z.string().nonempty("Senha é obrigatória"),
 });
 
@@ -44,6 +47,10 @@ export default function Login() {
     formState: { errors },
   } = useForm<LoginFormSchema>({
     resolver: zodResolver(loginFormSchema),
+    defaultValues: {
+    email: '',
+    password: '',
+  },
   });
 
   const handleLogin = async (data: LoginFormSchema) => {
