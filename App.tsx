@@ -40,7 +40,15 @@ export default Sentry.wrap(function App() {
       <QueryClientProvider client={queryClient}>
         <TaskProvider>
           <NavigationContainer>
-            <Stack.Navigator>
+            <Stack.Navigator
+              initialRouteName="Splash"
+              screenOptions={{ headerShown: false }}
+            >
+              <Stack.Screen
+                name="Splash"
+                component={Splash}
+                options={{ headerShown: false }}
+              />
               <Stack.Screen
                 name="SignUp"
                 component={SignUp}
@@ -50,6 +58,7 @@ export default Sentry.wrap(function App() {
                 name="Login"
                 component={Login}
                 options={{ headerShown: false }}
+                
               />
               <Stack.Screen
                 name="Home"
@@ -59,11 +68,6 @@ export default Sentry.wrap(function App() {
               <Stack.Screen
                 name="Profile"
                 component={Profile}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Splash"
-                component={Splash}
                 options={{ headerShown: false }}
               />
             </Stack.Navigator>
