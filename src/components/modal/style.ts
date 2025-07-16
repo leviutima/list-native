@@ -1,10 +1,7 @@
 import styled from "styled-components/native";
 
 export const ContainerPropsTask = styled.View`
-  display: flex;
-  flex-direction: row;
-  align-items: start;
-  justify-content: space-between;
+
 `;
 
 export const ModalStyle = styled.View`
@@ -14,3 +11,10 @@ export const ModalStyle = styled.View`
   width: 90%;
   max-height: 90%;
 `;
+
+export const InputContainerChange = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`

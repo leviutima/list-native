@@ -24,80 +24,16 @@
   ],
   "task": [
     {
-      "id": "l1j231021lk1dj102d1jc1c018dc10iosaldj",
-      "userId": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
-      "title": "Fazer dever de casa",
-      "description": "Aula de matemática",
-      "status": "URGENT",
-      "finished": true,
-      "subtasks": [
-        {
-          "id": "1",
-          "title": "Exercício 1-10",
-          "finished": false
-        },
-        {
-          "id": "2",
-          "title": "Resumo aula",
-          "finished": false
-        }
-      ]
-    },
-    {
-      "id": "4005",
-      "title": "Estudar portugues",
+      "title": "Licao de matematica",
       "description": "Prova amanha",
       "status": "URGENT",
       "subtasks": [
         {
-          "title": "Fazer Resumo"
+          "title": "asasa",
+          "finished": false
         }
       ],
-      "userId": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
-      "finished": false
-    },
-    {
-      "id": "330a",
-      "title": "teste",
-      "description": "este",
-      "status": "OPTIONAL",
-      "subtasks": [],
-      "userId": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
-      "finished": false
-    },
-    {
-      "id": "5427",
-      "title": "asas",
-      "description": "asa",
-      "status": "PENDING",
-      "userId": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
-      "finished": false
-    },
-    {
-      "id": "7b71",
-      "title": "asdasdasdasdada",
-      "description": "asdasdad",
-      "status": "PENDING",
-      "subtasks": [
-        {
-          "title": "teste"
-        }
-      ],
-      "userId": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
-      "finished": false
-    },
-    {
-      "id": "a711",
-      "title": "Geografia",
-      "description": "Prova semana que vem",
-      "status": "PENDING",
-      "subtasks": [
-        {
-          "title": "Exercícios"
-        }
-      ],
-      "userId": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
-      "finished": true
+      "id": "f336"
     }
   ]
 }

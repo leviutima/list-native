@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import {
   CardContainer,
@@ -14,11 +14,11 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { patchFinishedTask } from "../../service/task/patch-finished-task";
 import { TaskModal } from "../modal/task-modal";
-import { boolean } from "zod";
+import { deleteTask } from "../../service/task/delete-task";
 
 type Subtask = {
   title: string;
-  done: boolean;
+  finished: boolean;
 };
 
 type CardTodoProps = {
@@ -38,17 +38,17 @@ export default function CardTodo({
   id,
   finished,
 }: CardTodoProps) {
-  const [checked, setChecked] = useState( finished);
+  const [checked, setChecked] = useState(finished);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [subtaskList, setSubtaskList] = useState<Subtask[]>(subtasks);
 
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: (finished: boolean) => patchFinishedTask(id, finished),
     onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ['task']})
-    }
+      queryClient.invalidateQueries({ queryKey: ["task"] });
+    },
   });
 
   const toggleChecked = () => {
@@ -61,10 +61,21 @@ export default function CardTodo({
   const toggleSubtask = (index: number) => {
     setSubtaskList((subTask) =>
       subTask.map((task, i) =>
-        i === index ? { ...task, done: !task.done } : task
+        i === index ? { ...task, finished: !task.finished } : task
       )
     );
   };
+
+  const {mutate, isPending} = useMutation({
+    mutationFn: () => deleteTask(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({queryKey: ['task']})
+    }
+  })
+
+  const deleteTaskSubmit = async() =>{
+    mutate()
+  }
 
   const getStatusColor = () => {
     switch (status) {
@@ -84,22 +95,27 @@ export default function CardTodo({
       <TouchableOpacity onPress={toggleModal} activeOpacity={0.9}>
         <CardContainer style={{ opacity: checked ? 0.5 : 1 }}>
           <HeaderCard>
-            <TitleWrapper>
-              <CheckButton onPress={toggleChecked}>
-                <Ionicons
-                  name={checked ? "checkmark-circle" : "ellipse-outline"}
-                  size={22}
-                  color={checked ? "#4caf50" : "#aaa"}
-                />
-              </CheckButton>
-              <Title
-                style={{
-                  textDecorationLine: checked ? "line-through" : "none",
-                }}
-              >
-                {title}
-              </Title>
-            </TitleWrapper>
+            <View>
+              <TitleWrapper>
+                <CheckButton onPress={toggleChecked}>
+                  <Ionicons
+                    name={checked ? "checkmark-circle" : "ellipse-outline"}
+                    size={22}
+                    color={checked ? "#4caf50" : "#aaa"}
+                  />
+                </CheckButton>
+                <Title
+                  style={{
+                    textDecorationLine: checked ? "line-through" : "none",
+                  }}
+                >
+                  {title}
+                </Title>
+              </TitleWrapper>
+            </View>
+            <TouchableOpacity onPress={deleteTaskSubmit}>
+              <Ionicons name="trash" size={18} color={"red"} />
+            </TouchableOpacity>
           </HeaderCard>
 
           <Description
@@ -118,13 +134,13 @@ export default function CardTodo({
         </CardContainer>
       </TouchableOpacity>
       <TaskModal
+        id={id}
+        subtasks={subtaskList}
         visible={isModalVisible}
         onClose={toggleModal}
         title={title}
         description={description}
         status={status}
-        subtasks={subtaskList}
-        toggleSubtask={toggleSubtask}
       />
     </>
   );

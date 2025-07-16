@@ -76,6 +76,7 @@ export default function CreateTaskModal({ visible, onClose }: CreateTaskModalPro
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ["task"] });
         reset();
+        remove([...Array(fields.length).keys()]);
         onClose();
       },
     });
