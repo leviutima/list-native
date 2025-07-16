@@ -26,11 +26,11 @@
     {
       "title": "Licao de matematica",
       "description": "Prova amanha",
-      "status": "URGENT",
+      "status": "PENDING",
       "subtasks": [
         {
           "title": "asasa",
-          "finished": false
+          "finished": true
         }
       ],
       "id": "f336"

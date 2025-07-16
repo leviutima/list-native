@@ -25,6 +25,7 @@ import z, { email, string } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { createUser } from "../../service/user/create-user";
+import * as Sentry from "@sentry/react-native";
 
 const signUpFormSchema = z.object({
   name: z.string(),
@@ -44,8 +45,17 @@ export default function SingUp() {
   });
 
   const handleSingUp = async (data: SignUpFormSchema) => {
-    mutate(data);
-    navigation.navigate("Login");
+    try {
+      mutate(data);
+      navigation.navigate("Login");
+    } catch (error) {
+      Sentry.captureException(error, {
+        extra: {
+          email: data.email,
+          context: "Falha no handleSignUp",
+        },
+      });
+    }
   };
 
   const { user } = useSelector((state: RootState) => state.auth);
@@ -157,7 +167,15 @@ export default function SingUp() {
               </InputFormContainer>
             </FormContainer>
             <Container>
-              <ButtonSis onPress={handleSubmit(handleSingUp)} disabled={isPending}>
+              <ButtonSis
+                onPress={handleSubmit(handleSingUp, (errors) => {
+                  Sentry.captureMessage("Erro de validação no cadastro", {
+                    level: "warning",
+                    extra: errors,
+                  });
+                })}
+                disabled={isPending}
+              >
                 {isPending ? "Carregando..." : "Criar conta"}
               </ButtonSis>
               <Text style={{ fontSize: 10, color: "#9f9f9f" }}>OU</Text>

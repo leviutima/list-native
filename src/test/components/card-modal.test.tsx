@@ -1,10 +1,7 @@
-// src/test/components/card-modal.test.tsx
-
 import React from "react";
 import { fireEvent, render, waitFor } from "@testing-library/react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-// ✅ Corrigido: mocks encapsulados corretamente dentro da função
 jest.mock("@expo/vector-icons", () => {
   const React = require("react");
   const { Text } = require("react-native");

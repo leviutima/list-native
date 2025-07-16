@@ -12,6 +12,7 @@ import { UserProfile } from "../../components/header/style";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateUser } from "../../service/user/update-user";
 import { setUser } from "../../redux/actions/authAction";
+import * as Sentry from "@sentry/react-native";
 
 const profileFormSchema = z.object({
   name: z.string(),
@@ -38,7 +39,6 @@ export default function Profile() {
     },
   });
 
-
   const { mutate, isPending } = useMutation({
     mutationKey: ["user"],
     mutationFn: (data: ProfileForm) => updateUser(data, user.id),
@@ -46,13 +46,32 @@ export default function Profile() {
       dispatch(setUser(updatedUser));
       queryClient.invalidateQueries({ queryKey: ["user"] });
     },
+    onError: (error: any, variables) => {
+      Sentry.captureException(error, {
+        extra: {
+          context: "Erro ao atualizar perfil",
+          userId: user?.id,
+          email: user?.email,
+          dadosEnviados: variables,
+        },
+      });
+    },
   });
 
   const onSubmit = (data: ProfileForm) => {
+    if (!user?.id) {
+      Sentry.captureMessage(
+        "Tentativa de atualizar perfil sem usuário autenticado",
+        {
+          level: "warning",
+          extra: { data },
+        }
+      );
+      return;
+    }
     mutate(data);
     setEditingField(null);
   };
-
   return (
     <MainContainer>
       <HeaderProfile />
