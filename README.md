@@ -15,6 +15,8 @@ Aplicativo de lista de tarefas (ToDo List) desenvolvido em **React Native** com 
 - **Jest** + **React Native Testing Library** (testes)
 - **JSON Server** (API fake local)
 - **Sentry** (log de erros)
+- **React Query**
+- **React Navigation**
 ---
 
 ## 🚀 Executando a Aplicação
