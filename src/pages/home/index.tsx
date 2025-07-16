@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import { Header } from "../../components/header/header";
 import Footer from "../../components/footer/Footer";
@@ -18,31 +18,50 @@ export default function Home() {
   const [statusFilter, setStatusFilter] = useState<
     "all" | "PENDING" | "URGENT" | true
   >("all");
+
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const user = useSelector((state: RootState) => state.auth.user);
 
   const {
     data: tasks = [],
-    isLoading,
-    error,
   } = useQuery({
     queryKey: ["task", user?.id],
     queryFn: () => getTasksByUser(user.id),
     enabled: Boolean(user?.id),
   });
 
-  const filteredTasks = tasks
-    .filter((task: any) =>
-      task.title.toLowerCase().includes(search.toLowerCase())
-    )
-    .filter((task: any) => {
-      if (statusFilter === "all") return true;
-      if (statusFilter === "PENDING") return task.status === "PENDING";
-      if (statusFilter === "URGENT") return task.status === "URGENT";
-      if (statusFilter === true) return task.finished === true;
-      return true;
-    });
+  const filteredTasks = useMemo(() => {
+    return tasks
+      .filter((task: any) =>
+        task.title.toLowerCase().includes(search.toLowerCase())
+      )
+      .filter((task: any) => {
+        if (statusFilter === "all") return true;
+        if (statusFilter === "PENDING") return task.status === "PENDING";
+        if (statusFilter === "URGENT") return task.status === "URGENT";
+        if (statusFilter === true) return task.finished === true;
+        return true;
+      });
+  }, [tasks, search, statusFilter]);
+
+  const renderItem = useCallback(
+    ({ item }: { item: any }) => (
+      <CardTodo
+        title={item.title}
+        description={item.description}
+        status={item.status}
+        subtasks={item.subtasks?.map((s: any) => ({
+          title: s.title,
+          done: s.finished,
+        }))}
+        id={item.id}
+        key={item.id}
+        finished={item.finished}
+      />
+    ),
+    []
+  );
 
   useEffect(() => {
     if (!user) {
@@ -87,21 +106,8 @@ export default function Home() {
         <FlatList
           data={filteredTasks}
           keyExtractor={(item) => item.id}
+          renderItem={renderItem}
           contentContainerStyle={{ paddingBottom: 100, paddingHorizontal: 16 }}
-          renderItem={({ item }) => (
-            <CardTodo
-              title={item.title}
-              description={item.description}
-              status={item.status}
-              subtasks={item.subtasks?.map((s: any) => ({
-                title: s.title,
-                done: s.finished,
-              }))}
-              id={item.id}
-              key={item.id}
-              finished={item.finished}
-            />
-          )}
           ListEmptyComponent={() => (
             <View
               style={{
@@ -115,12 +121,7 @@ export default function Home() {
               <Text style={{ fontSize: 20, fontWeight: "600", color: "white" }}>
                 Sem resultados para a sua pesquisa
               </Text>
-              <Text
-                style={{
-                  color: "white",
-                  fontSize: 16,
-                }}
-              >
+              <Text style={{ color: "white", fontSize: 16 }}>
                 Nenhuma tarefa encontrada
               </Text>
             </View>
@@ -133,28 +134,31 @@ export default function Home() {
   );
 }
 
-const TextFilterButton = ({
-  label,
-  active,
-  onPress,
-}: {
-  label: string;
-  active: boolean;
-  onPress: () => void;
-}) => (
-  <Text
-    onPress={onPress}
-    style={{
-      paddingHorizontal: 12,
-      paddingVertical: 6,
-      borderRadius: 20,
-      backgroundColor: active ? "#000" : "#eee",
-      color: active ? "#fff" : "#000",
-      fontWeight: "500",
-      fontSize: 13,
-      overflow: "hidden",
-    }}
-  >
-    {label}
-  </Text>
+import ReactMemo from "react";
+const TextFilterButton = ReactMemo.memo(
+  ({
+    label,
+    active,
+    onPress,
+  }: {
+    label: string;
+    active: boolean;
+    onPress: () => void;
+  }) => (
+    <Text
+      onPress={onPress}
+      style={{
+        paddingHorizontal: 12,
+        paddingVertical: 6,
+        borderRadius: 20,
+        backgroundColor: active ? "#000" : "#eee",
+        color: active ? "#fff" : "#000",
+        fontWeight: "500",
+        fontSize: 13,
+        overflow: "hidden",
+      }}
+    >
+      {label}
+    </Text>
+  )
 );

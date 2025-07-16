@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   ScrollView,
+  Alert,
 } from "react-native";
 import { FormContainer, InputFormContainer, SubContainer } from "./styles";
 import { MainContainer } from "../../styles/mainContainer";
@@ -17,7 +18,7 @@ import { Container } from "../../styles/container";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../utils/types";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Controller, useForm } from "react-hook-form";
@@ -26,6 +27,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { createUser } from "../../service/user/create-user";
 import * as Sentry from "@sentry/react-native";
+import { Toast } from "../../components/toast/toast";
 
 const signUpFormSchema = z.object({
   name: z.string(),
@@ -36,6 +38,15 @@ const signUpFormSchema = z.object({
 
 type SignUpFormSchema = z.infer<typeof signUpFormSchema>;
 export default function SingUp() {
+  const [toast, setToast] = useState<{
+    visible: boolean;
+    type: "success" | "error";
+    message: string;
+  }>({
+    visible: false,
+    type: "success",
+    message: "",
+  });
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const keyboardVisible = useKeyboard();
@@ -45,17 +56,26 @@ export default function SingUp() {
   });
 
   const handleSingUp = async (data: SignUpFormSchema) => {
-    try {
-      mutate(data);
-      navigation.navigate("Login");
-    } catch (error) {
-      Sentry.captureException(error, {
-        extra: {
-          email: data.email,
-          context: "Falha no handleSignUp",
-        },
-      });
-    }
+    mutate(data, {
+      onSuccess: () => {
+        setToast({
+          visible: true,
+          type: "success",
+          message: "Conta criada com sucesso!",
+        });
+        setTimeout(() => {
+          navigation.navigate("Login");
+        }, 2000);
+      },
+      onError: (error) => {
+        setToast({
+          visible: true,
+          type: "error",
+          message: "Erro ao criar conta. Verifique os dados.",
+        });
+        Sentry.captureException(error);
+      },
+    });
   };
 
   const { user } = useSelector((state: RootState) => state.auth);
@@ -186,6 +206,14 @@ export default function SingUp() {
                 Já tem uma conta?
               </Text>
             </Container>
+            {toast.visible && (
+              <Toast
+                visible={toast.visible}
+                type={toast.type}
+                message={toast.message}
+                onHide={() => setToast({ ...toast, visible: false })}
+              />
+            )}
           </MainContainer>
         </ScrollView>
       </TouchableWithoutFeedback>
