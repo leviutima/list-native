@@ -49,15 +49,30 @@ describe("TaskModal", () => {
   });
 
   it("permite editar o título", async () => {
-  const { getByText, getByDisplayValue, queryByText } = renderWithClient(
-    <TaskModal {...baseProps} />
-  );
-  const tituloEl = getByText("Título teste");
-  fireEvent.press(tituloEl);
-  const input = await waitFor(() => getByDisplayValue("Título teste"));
-  fireEvent.changeText(input, "Novo título");
-  const atualizarBtn = queryByText("Atualizar");
-  expect(atualizarBtn).toBeTruthy();
-  fireEvent.press(atualizarBtn!);
-});
+    const { getByText, getByDisplayValue, queryByText } = renderWithClient(
+      <TaskModal {...baseProps} />
+    );
+    const tituloEl = getByText("Título teste");
+    fireEvent.press(tituloEl);
+    const input = await waitFor(() => getByDisplayValue("Título teste"));
+    fireEvent.changeText(input, "Novo título");
+    const atualizarBtn = queryByText("Atualizar");
+    expect(atualizarBtn).toBeTruthy();
+    fireEvent.press(atualizarBtn!);
+  });
+
+  it("permite editar a descrição", async () => {
+    const { getByText, getByDisplayValue, queryByText } = renderWithClient(
+      <TaskModal {...baseProps} />
+    );
+    const descricaoEl = getByText("Descrição teste");
+    fireEvent.press(descricaoEl);
+    const input = await waitFor(() =>
+      getByDisplayValue("Descrição teste")
+    );
+    fireEvent.changeText(input, "Nova descrição");
+    const atualizarBtn = queryByText("Atualizar");
+    expect(atualizarBtn).toBeTruthy();
+    fireEvent.press(atualizarBtn!);
+  });
 });
