@@ -1,78 +1,68 @@
-Agenda EDU - Aplicativo de Gestão Escolar
-![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
-📝 Descrição
-O Agenda EDU é um aplicativo móvel desenvolvido em React Native para ajudar estudantes e professores a organizarem suas atividades acadêmicas. Com funcionalidades de autenticação e gerenciamento de tarefas, o app oferece uma solução completa para o dia a dia escolar. (Aplicativo desenvolvido para fins didáticos, sem fins lucrativos.)
+# 📋 ToDo List App
 
-✨ Funcionalidades Principais
-🔐 Autenticação Segura
-Sistema de login com validação de credenciais
+Aplicativo de lista de tarefas (ToDo List) desenvolvido em **React Native** com suporte a autenticação, criação de tarefas, subtarefas, perfis de usuário, notificações de urgência e testes automatizados.
 
-Persistência de sessão do usuário
+---
 
-Tela de boas-vindas personalizada
+## 🧪 Tecnologias Utilizadas
 
-✅ Gerenciamento de Tarefas
+- **React Native** (com Expo)
+- **Redux** (controle de estado global)
+- **React Hook Form** + **Zod** (validação de formulários)
+- **React Query** (requisições e cache)
+- **Styled Components** (estilização)
+- **Jest** + **React Native Testing Library** (testes)
+- **JSON Server** (API fake local)
+- **Sentry** (log de erros)
+- **Maestro** (opcional, para testes E2E)
 
-🛠 Tecnologias Utilizadas
-Frontend: React Native + TypeScript
+---
 
-Estilização: StyleSheet
+## 🚀 Executando a Aplicação
 
-Gerenciamento de Estado: Context
+### 📱 Pré-requisitos
 
-Navegação: React Navigation
+- Node.js
+- Expo CLI (`npm install -g expo-cli`)
+- Git
+- Editor como VSCode
+- Celular com Expo Go **ou** emulador Android/iOS
 
-Build: Expo
+---
 
-Armazenamento Local: Context
+## ⚙️ Instruções de Setup
 
-🚀 Como Executar o Projeto
-Pré-requisitos
-Node.js (v16 ou superior)
+### 1️⃣ Clonar o projeto
 
-Yarn ou npm
+git clone https://github.com/seu-usuario/todo-app.git
+cd todo-app
 
-Expo CLI instalado globalmente (npm install -g expo-cli)
+npm install 
 
-Instalação
-Clone o repositório:
+Verificar seu IP local (IPv4)
+  Execute no terminal:
+  ipconfig
+  npx json-server --watch db.json --host 192.168.0.101 --port 3000
 
-bash
-git clone https://github.com/leviutima/list-native.git
-cd list-native
-Instale as dependências:
+Atualizar ./service/api.ts
 
-bash
-yarn install
-# ou
-npm install
-Inicie o servidor de desenvolvimento:
+📱 Rodando a Aplicação com Expo
+npx expo start
 
-bash
-expo start
-📱 Build para Produção
-Para gerar um APK/IPA:
+🧪 Rodando os Testes
+Testes Unitários e de Integração
+npm run test
 
-bash
-expo build:android
-# ou
-expo build:ios
-🤝 Como Contribuir
-Faça um fork do projeto
+Testes com Coverage
+npm run test:coverage
 
-Crie uma branch para sua feature (git checkout -b feature/awesome-feature)
-
-Commit suas mudanças (git commit -m 'Add some awesome feature')
-
-Push para a branch (git push origin feature/awesome-feature)
-
-Abra um Pull Request
-
-📄 Licença
-Este projeto está licenciado sob a licença MIT - veja o arquivo LICENSE para detalhes.
-
-✉️ Contato
-Para dúvidas ou sugestões, entre em contato:
-
-Email: leviutima.profissional@gmail.com
+✅ Funcionalidades
+ - Login / Cadastro de Usuário
+ - Perfil com edição inline
+ - Criar, atualizar e deletar tarefas
+ - Subtarefas dinâmicas
+ - Notificação de tarefas URGENTES
+ - Validações com Zod
+ - Testes automatizados (Jest)
+ - Integração com API Fake (JSON Server)
+ - Estilização com Styled Components
