@@ -7,7 +7,7 @@ interface ToastProps {
   type?: "success" | "error" | "info";
   message: string;
   onHide: () => void;
-  duration?: number; // default: 2000ms
+  duration?: number; 
 }
 
 export const Toast: React.FC<ToastProps> = ({
@@ -15,7 +15,7 @@ export const Toast: React.FC<ToastProps> = ({
   type = "info",
   message,
   onHide,
-  duration = 2000,
+  duration = 3000,
 }) => {
   const opacity = useRef(new Animated.Value(0)).current;
   const translateY = useRef(new Animated.Value(30)).current;

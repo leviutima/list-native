@@ -1,70 +1,56 @@
-import { StyleSheet } from "react-native";
-import { DefaultTheme } from "styled-components";
 import styled from "styled-components/native";
 
-export const MainContainer = styled.View`
+export const Wrapper = styled.View`
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
 `;
 
-export const ContainerList = styled.View`
+export const Centered = styled.View`
+  display: flex;
+  align-items: center;
+`;
+
+
+export const FieldContainer = styled.View`
+  margin-bottom: 16px;
+`;
+
+export const Label = styled.Text`
+  font-weight: bold;
+  font-size: 46px;
+  color: white;
+`;
+
+export const TextRow = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const FieldText = styled.Text`
   flex: 1;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 30px 30px 0px 0px;
+  font-size: 26px;
+  color: white;
+`;
+
+export const FieldInput = styled.TextInput`
+  flex: 1;
+  font-size: 26px;
+  color: white;
+  border-bottom-width: 1px;
+  border-color: white;
+`;
+
+export const EditIcon = styled.TouchableOpacity`
+  margin-left: 8px;
+`;
+
+export const SaveButton = styled.TouchableOpacity`
   background-color: #878af6;
-  position: relative;
-  bottom: 0px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 35;
+  border-radius: 6px;
+  margin-top: 20px;
 `;
 
-export const style = StyleSheet.create({
-  mainContainer: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 10,
-    flex: 1,
-  },
-  taskCard: {
-    backgroundColor: "#fff",
-    padding: 16,
-    borderRadius: 8,
-    marginBottom: 12,
-    elevation: 2,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-  },
-
-  taskTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 6,
-  },
-
-  taskDescription: {
-    fontSize: 14,
-    color: "#444",
-    marginBottom: 8,
-  },
-
-  flagsContainer: {
-    flexDirection: "row",
-    gap: 8,
-  },
-
-  flag: {
-    color: "white",
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 4,
-    fontSize: 12,
-    fontWeight: "bold",
-    marginRight: 6,
-  },
-});
+export const SaveButtonText = styled.Text`
+  text-align: center;
+  color: white;
+  font-weight: bold;
+`;

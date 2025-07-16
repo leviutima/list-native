@@ -1,6 +1,8 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { BellButton, NotificationBadge } from "./style";
+
 
 type NotificationBellProps = {
   urgentCount: number;
@@ -9,27 +11,23 @@ type NotificationBellProps = {
 
 export function NotificationBell({ urgentCount, onPress }: NotificationBellProps) {
   return (
-    <TouchableOpacity onPress={onPress} style={{ position: "relative" }}>
+    <BellButton onPress={onPress}>
       <Ionicons name="notifications-outline" size={28} color="#333" />
+
       {urgentCount > 0 && (
-        <View
-          style={{
-            position: "absolute",
-            top: -4,
-            right: -4,
-            backgroundColor: "#f44336",
-            borderRadius: 10,
-            paddingHorizontal: 6,
-            paddingVertical: 2,
-            minWidth: 20,
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ color: "white", fontSize: 12 }}>
-            {urgentCount}
+        <NotificationBadge>
+          <Text
+            style={{
+              color: "white",
+              fontSize: 12,
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          >
+            {urgentCount > 9 ? "9+" : urgentCount}
           </Text>
-        </View>
+        </NotificationBadge>
       )}
-    </TouchableOpacity>
+    </BellButton>
   );
 }

@@ -1,75 +1,11 @@
 {
   "user": [
     {
-      "name": "Levi",
+      "name": "Levi Yuki",
       "surname": "Utima",
       "email": "levi.utima@gmail.com",
-      "id": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k",
-      "password": "senha123"
-    },
-    {
-      "name": "teste",
-      "surname": "teste",
-      "email": "teste@gmail.com",
-      "id": "ad81012l1k2j3l1kjld2kj1kld1kjdl1k2j1l2",
-      "password": "senha123"
-    },
-    {
-      "id": "6323",
-      "name": "marcos",
-      "surname": "rocha",
-      "email": "marcos@gmail.com",
-      "passowrd": "senha123"
-    },
-    {
-      "id": "c28a",
-      "name": "sasa",
-      "surname": "asasa",
-      "email": "asdasdasdadsa",
-      "passowrd": "asdasda"
-    },
-    {
-      "id": "28d7",
-      "name": "testas",
-      "surname": "asasasasasasas",
-      "email": "asas",
-      "passowrd": "asas"
-    },
-    {
-      "id": "6292",
-      "name": "testas",
-      "surname": "asasasasasasas",
-      "email": "asas",
-      "passowrd": "asas"
-    },
-    {
-      "id": "17ff",
-      "name": "testas",
-      "surname": "asasasasasasas",
-      "email": "asas",
-      "passowrd": "asas"
-    },
-    {
-      "id": "ef2d",
-      "name": "testas",
-      "surname": "asasasasasasas",
-      "email": "asas",
-      "passowrd": "asas"
+      "id": "ad81012718fafaf019f73hf1j1kh3k1jh3l1k"
     }
   ],
-  "task": [
-    {
-      "title": "Licao de matematica",
-      "description": "Prova amanha",
-      "status": "URGENT",
-      "subtasks": [
-        {
-          "title": "asasa",
-          "done": true
-        }
-      ],
-      "id": "f336",
-      "finished": false
-    }
-  ]
+  "task": []
 }

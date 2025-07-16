@@ -10,7 +10,7 @@ import {
 import { Picker } from "@react-native-picker/picker";
 import { Ionicons } from "@expo/vector-icons";
 import { Controller, useForm } from "react-hook-form";
-import { ContainerPropsTask, ModalStyle } from "./style";
+import { ContainerPropsTask, ModalStyle } from "./styles";
 import { MainContainer } from "../../styles/mainContainer";
 import { Container } from "../../styles/container";
 import { useMutation, useQueryClient } from "@tanstack/react-query";

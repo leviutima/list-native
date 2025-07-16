@@ -14,9 +14,11 @@ import { RootState } from "../../redux/store";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../utils/types";
+import { NotificationBellWrapper } from "../notification-bell/notificationBellWrapper";
 
 export function HeaderProfile() {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const user = useSelector((state: RootState) => state.auth.user);
 
@@ -28,7 +30,7 @@ export function HeaderProfile() {
             <Ionicons name="arrow-back" size={24} color="black" />
           </UserProfile>
         </TouchableOpacity>
-        <Ionicons name="notifications-outline" size={24} color="black" />
+        <NotificationBellWrapper />
       </TopHeader>
       <SubContainer>
         <MessageContainer>

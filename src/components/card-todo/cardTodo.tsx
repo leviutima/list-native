@@ -58,13 +58,13 @@ export default function CardTodo({
   };
   const toggleModal = () => setIsModalVisible((prev) => !prev);
 
-  const toggleSubtask = (index: number) => {
-    setSubtaskList((subTask) =>
-      subTask.map((task, i) =>
-        i === index ? { ...task, finished: !task.finished } : task
-      )
-    );
-  };
+  // const toggleSubtask = (index: number) => {
+  //   setSubtaskList((subTask) =>
+  //     subTask.map((task, i) =>
+  //       i === index ? { ...task, finished: !task.finished } : task
+  //     )
+  //   );
+  // };
 
   const {mutate, isPending} = useMutation({
     mutationFn: () => deleteTask(id),

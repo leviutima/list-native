@@ -23,9 +23,7 @@ export default function Home() {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const user = useSelector((state: RootState) => state.auth.user);
 
-  const {
-    data: tasks = [],
-  } = useQuery({
+  const { data: tasks = [] } = useQuery({
     queryKey: ["task", user?.id],
     queryFn: () => getTasksByUser(user.id),
     enabled: Boolean(user?.id),

@@ -22,7 +22,7 @@ export function AddSubtaskInput({ onAddSubtask }: Props) {
     };
 
     onAddSubtask(newSubtask);
-    setTitle(""); // limpar o input
+    setTitle(""); 
   };
 
   return (

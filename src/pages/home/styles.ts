@@ -16,6 +16,7 @@ export const ContainerList = styled.View`
   background-color: #878af6;
   position: relative;
   bottom: 0px;
+  padding: 0px 25px 0px 25px;
 `;
 
 export const style = StyleSheet.create({
