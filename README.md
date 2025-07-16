@@ -7,15 +7,14 @@ Aplicativo de lista de tarefas (ToDo List) desenvolvido em **React Native** com 
 ## 🧪 Tecnologias Utilizadas
 
 - **React Native** (com Expo)
-- **Redux** (controle de estado global)
+- **Redux-Saga** (controle de estado global)
+- **Redux-ToolKit**
 - **React Hook Form** + **Zod** (validação de formulários)
 - **React Query** (requisições e cache)
 - **Styled Components** (estilização)
 - **Jest** + **React Native Testing Library** (testes)
 - **JSON Server** (API fake local)
 - **Sentry** (log de erros)
-- **Maestro** (opcional, para testes E2E)
-
 ---
 
 ## 🚀 Executando a Aplicação
