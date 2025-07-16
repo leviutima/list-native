@@ -62,7 +62,7 @@ export default function Login() {
   if (user) {
     navigation.reset({
       index: 0,
-      routes: [{ name: "Splash" }],
+      routes: [{ name: "Home" }],
     });
   }
 }, [user]);

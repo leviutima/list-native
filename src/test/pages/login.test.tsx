@@ -83,7 +83,7 @@ describe("Login screen", () => {
     });
   });
 
-  it("deve navegar para Splash ao logar com sucesso", async () => {
+  it("deve navegar para Home ao logar com sucesso", async () => {
     mockedState.auth.user = { id: 1, name: "João" };
 
     render(
@@ -95,7 +95,7 @@ describe("Login screen", () => {
     await waitFor(() => {
       expect(mockReset).toHaveBeenCalledWith({
         index: 0,
-        routes: [{ name: "Splash" }],
+        routes: [{ name: "Home" }],
       });
     });
   });
