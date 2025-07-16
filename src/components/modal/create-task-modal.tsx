@@ -32,6 +32,8 @@ interface CreateTaskModalProps {
 }
 
 export default function CreateTaskModal({ visible, onClose }: CreateTaskModalProps) {
+
+
   const queryClient = useQueryClient();
 
     const user = useSelector((state: RootState) => state.auth.user);
@@ -165,8 +167,6 @@ export default function CreateTaskModal({ visible, onClose }: CreateTaskModalPro
               </View>
             )}
           />
-
-          {/* Botões */}
           <View style={styles.buttonsRow}>
             <TouchableOpacity onPress={onClose} style={styles.cancelButton}>
               <Text style={styles.buttonText}>Cancelar</Text>

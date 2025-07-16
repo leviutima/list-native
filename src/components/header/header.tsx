@@ -14,6 +14,7 @@ import { RootState } from "../../redux/store";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../utils/types";
+import { NotificationBell } from "../notification-bell/notificationBell";
 
 type HeaderProps = {
   onSearch: (query: string) => void;
@@ -32,7 +33,7 @@ export function Header({ onSearch }: HeaderProps) {
             <Ionicons name="person" size={24} color="black" />
           </UserProfile>
         </TouchableOpacity>
-        <Ionicons name="notifications-outline" size={24} color="black" />
+        <NotificationBell />
       </TopHeader>
       <SubContainer>
         <MessageContainer>

@@ -21,6 +21,10 @@ const profileFormSchema = z.object({
 
 type ProfileForm = z.infer<typeof profileFormSchema>;
 export default function Profile() {
+  const [editingField, setEditingField] = useState<null | keyof ProfileForm>(
+    null
+  );
+
   const user = useSelector((state: RootState) => state.auth.user);
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
@@ -34,9 +38,6 @@ export default function Profile() {
     },
   });
 
-  const [editingField, setEditingField] = useState<null | keyof ProfileForm>(
-    null
-  );
 
   const { mutate, isPending } = useMutation({
     mutationKey: ["user"],

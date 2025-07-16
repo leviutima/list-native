@@ -11,9 +11,10 @@ import {
   CheckButton,
   TitleWrapper,
 } from "./styles";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { patchFinishedTask } from "../../service/task/patch-finished-task";
 import { TaskModal } from "../modal/task-modal";
+import { boolean } from "zod";
 
 type Subtask = {
   title: string;
@@ -37,12 +38,17 @@ export default function CardTodo({
   id,
   finished,
 }: CardTodoProps) {
-  const [checked, setChecked] = useState(finished ?? false);
+  const [checked, setChecked] = useState( finished);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [subtaskList, setSubtaskList] = useState<Subtask[]>(subtasks);
 
+  const queryClient = useQueryClient()
+
   const mutation = useMutation({
     mutationFn: (finished: boolean) => patchFinishedTask(id, finished),
+    onSuccess: () => {
+      queryClient.invalidateQueries({queryKey: ['task']})
+    }
   });
 
   const toggleChecked = () => {
@@ -53,8 +59,8 @@ export default function CardTodo({
   const toggleModal = () => setIsModalVisible((prev) => !prev);
 
   const toggleSubtask = (index: number) => {
-    setSubtaskList((prev) =>
-      prev.map((task, i) =>
+    setSubtaskList((subTask) =>
+      subTask.map((task, i) =>
         i === index ? { ...task, done: !task.done } : task
       )
     );
