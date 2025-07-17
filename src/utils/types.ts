@@ -11,3 +11,5 @@ export enum StatusTaskType {
   PENDING = "PENDING",
   OPTIONAL = "OPTIONAL",
 }
+
+export type TaskStatus = "URGENT" | "PENDING" | "OPTIONAL";

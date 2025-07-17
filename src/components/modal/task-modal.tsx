@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  Alert,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { Ionicons } from "@expo/vector-icons";
@@ -80,6 +81,9 @@ export function TaskModal({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["task"] });
     },
+    onError: (error: any) => {
+      Alert.alert("Erro", error?.message || "Erro ao atualizar tarefa");
+    },
   });
 
   const handleUpdate = () => {
@@ -88,7 +92,7 @@ export function TaskModal({
     setEditField(null);
     setEditSubtaskIndex(null);
   };
-  
+
   const handleToggleSubtask = (index: number) => {
     const updated = [...localSubtasks];
     updated[index].finished = !updated[index].finished;
@@ -330,7 +334,7 @@ export function TaskModal({
                 </TouchableOpacity>
               </Container>
             ))}
-             {isPending && (
+            {isPending && (
               <Text
                 style={{ textAlign: "center", color: "blue", marginTop: 10 }}
               >

@@ -1,17 +1,16 @@
+import { TaskStatus } from "./types";
+
 export interface UserProps {
-    id: string,
-    name: string,
-    surname: string,
-    email: string,
-    password: string
+  id: string;
+  name: string;
+  surname: string;
+  email: string;
+  password: string;
 }
 export interface Subtask {
-  id: string;
   title: string;
   finished: boolean;
 }
-
-export type TaskStatus = "URGENT" | "PENDING" | "OPTIONAL";
 
 export interface Task {
   id: string;

@@ -5,6 +5,7 @@ import {
   Modal,
   TouchableOpacity,
   FlatList,
+  Alert,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
@@ -79,6 +80,9 @@ export default function CreateTaskModal({
   const { mutate, isPending } = useMutation({
     mutationFn: createTask,
     mutationKey: ["task"],
+     onError: (error: any) => {
+    Alert.alert("Erro", error?.message || "Erro ao atualizar tarefa");
+  },
   });
 
   const submitTask = async (data: TaskFormSchema) => {

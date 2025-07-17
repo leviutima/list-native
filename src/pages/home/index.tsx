@@ -31,7 +31,7 @@ export default function Home() {
 
   const filteredTasks = useMemo(() => {
     return tasks
-      .filter((task: any) =>
+      .filter((task: Task) =>
         task.title.toLowerCase().includes(search.toLowerCase())
       )
       .filter((task: any) => {
@@ -44,14 +44,14 @@ export default function Home() {
   }, [tasks, search, statusFilter]);
 
   const renderItem = useCallback(
-    ({ item }: { item: any }) => (
+    ({ item }: { item: Task }) => (
       <CardTodo
         title={item.title}
         description={item.description}
         status={item.status}
         subtasks={item.subtasks?.map((s: any) => ({
           title: s.title,
-          done: s.finished,
+          finished: s.finished,
         }))}
         id={item.id}
         key={item.id}
@@ -85,14 +85,14 @@ export default function Home() {
             onPress={() => setStatusFilter("all")}
           />
           <TextFilterButton
-            label="Pendente"
-            active={statusFilter === "PENDING"}
-            onPress={() => setStatusFilter("PENDING")}
-          />
-          <TextFilterButton
             label="Urgente"
             active={statusFilter === "URGENT"}
             onPress={() => setStatusFilter("URGENT")}
+          />
+          <TextFilterButton
+            label="Pendente"
+            active={statusFilter === "PENDING"}
+            onPress={() => setStatusFilter("PENDING")}
           />
           <TextFilterButton
             label="Concluídas"
@@ -133,6 +133,7 @@ export default function Home() {
 }
 
 import ReactMemo from "react";
+import { Task } from "../../utils/interfaces";
 const TextFilterButton = ReactMemo.memo(
   ({
     label,

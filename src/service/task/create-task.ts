@@ -1,7 +1,6 @@
 import { api } from "../api";
 
 
-
 export const createTask = async (data: {}) => {
   try {
     const res = await api.post(`/task`, data);
