@@ -35,7 +35,7 @@ Aplicativo de lista de tarefas (ToDo List) desenvolvido em **React Native** com 
 
 ### 1️⃣ Clonar o projeto
 
-git clone https://github.com/seu-usuario/todo-app.git
+git clone https://github.com/leviutima/list-native.git
 cd todo-app
 
 npm install 
